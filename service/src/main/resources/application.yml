@@ -1,0 +1,49 @@
+server:
+  port: 8080
+
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/db_second_kill?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
+      password: 123456
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+    url: "redis://127.0.0.1:6379"
+
+  data:
+    solr:
+      zk-host: 127.0.0.1:2181
+
+  rabbitmq:
+    virtual-host: /
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        concurrency: 5
+        max-concurrency: 15
+        prefetch: 10
+
+
+mybatis-plus:
+  configuration:
+    #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
